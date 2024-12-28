@@ -26,10 +26,11 @@ export interface GlossaryEntry {
   id: string;
   sourceText: string;
   targetText: string;
-  context?: string;
-  category?: string;
+  context?: string | null;
+  category?: string | null;
   createdAt: Date;
 }
+
 
 export interface KnowledgeBase {
   id: string;

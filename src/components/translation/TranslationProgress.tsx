@@ -1,11 +1,17 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import { io } from 'socket.io-client';
 import { CheckCircle, Clock, AlertTriangle } from 'lucide-react';
 import { TranslationJob } from '../../types';
 
+// Initialize the WebSocket client
+const socket = io('http://localhost:3000'); // Update for the WebSocket server URL
+
+// Props interface
 interface TranslationProgressProps {
   job: TranslationJob;
 }
 
+// Functional Component for displaying translation progress
 export function TranslationProgress({ job }: TranslationProgressProps) {
   const getStatusIcon = () => {
     switch (job.status) {
@@ -29,7 +35,7 @@ export function TranslationProgress({ job }: TranslationProgressProps) {
           {new Date(job.createdAt).toLocaleString()}
         </span>
       </div>
-      
+
       <div className="space-y-2">
         <div className="flex justify-between text-sm text-gray-600">
           <span>Progress</span>
@@ -45,3 +51,29 @@ export function TranslationProgress({ job }: TranslationProgressProps) {
     </div>
   );
 }
+
+// Separate Real-Time Progress Component
+export function RealTimeTranslationProgress() {
+  const [progress, setProgress] = useState<number>(0);
+
+  useEffect(() => {
+    // Listen to translation progress updates from the backend
+    socket.on('translation-progress', (data: { progress: number }) => {
+      setProgress(data.progress);
+    });
+
+    return () => {
+      socket.off('translation-progress');
+    };
+  }, []);
+
+  return (
+    <div>
+      <h3>Progresso da Tradução</h3>
+      <progress value={progress} max="100"></progress>
+      <p>{progress}% concluído</p>
+    </div>
+  );
+}
+
+export default RealTimeTranslationProgress;

@@ -8,7 +8,7 @@ import { KnowledgeBaseList } from './components/knowledge/KnowledgeBaseList';
 import { GlossaryEditor } from './components/knowledge/GlossaryEditor';
 import { KnowledgeBaseForm } from './components/knowledge/KnowledgeBaseForm';
 import { TranslationJob, AuthState, KnowledgeBase } from './types';
-import { FileText, Book } from 'lucide-react';
+import { FileText } from 'lucide-react';
 
 function App() {
   const [auth, setAuth] = useState<AuthState>({

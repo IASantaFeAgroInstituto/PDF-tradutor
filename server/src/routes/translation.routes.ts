@@ -1,23 +1,21 @@
-import { Router } from 'express';
+// server/routes/translation.routes.ts
+import express from 'express';
 import multer from 'multer';
+import { translateDocument } from '../controllers/translation.controller';
+import { authenticate } from '../middlewares/auth.middleware';
+import { updateTranslationProgress } from "../services/translation.service";
 import path from 'path';
-import env from '../config/env';
-import * as translationController from '../controllers/translation.controller';
 
-const storage = multer.diskStorage({
-  destination: env.UPLOAD_DIR,
-  filename: (req, file, cb) => {
-    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1E9)}`;
-    cb(null, `${uniqueSuffix}${path.extname(file.originalname)}`);
-  },
-});
 
-const upload = multer({ storage });
 
-const router = Router();
+const upload = multer({ dest: process.env.UPLOAD_DIR || './uploads' });
+export const translationRoutes = express.Router();
 
-router.post('/', upload.single('file'), translationController.createTranslation);
-router.get('/', translationController.getTranslations);
-router.get('/:id', translationController.getTranslation);
+translationRoutes.post('/', upload.single('file'), translateDocument);
+translationRoutes.patch('/:id/progress', authenticate, updateTranslationProgress);
 
-export default router;
+translationRoutes.get('/download/:fileName', (req, res) => {
+    const fileName = req.params.fileName;
+    const filePath = path.join(__dirname, '../../translated_pdfs', fileName);
+    res.download(filePath, fileName);
+  });

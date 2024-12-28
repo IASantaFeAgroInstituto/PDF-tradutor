@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Upload, AlertCircle } from 'lucide-react';
+import { Upload } from 'lucide-react';
 import { parseGlossaryFile } from '../../utils/fileParser';
 import { GlossaryEntry } from '../../types';
 
@@ -44,12 +44,13 @@ export function GlossaryFileUpload({ onEntriesLoaded, onError }: GlossaryFileUpl
       onDrop={handleDrop}
       onDragOver={(e) => e.preventDefault()}
       className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-500 transition-colors"
+      data-testid="drop-zone"
     >
       <div className="flex flex-col items-center gap-3">
         <Upload className="h-8 w-8 text-gray-400" />
         <div>
           <p className="text-sm font-medium text-gray-700">
-            Drag and drop your glossary file here
+            Drop your file here
           </p>
           <p className="text-xs text-gray-500">or</p>
         </div>
@@ -60,6 +61,7 @@ export function GlossaryFileUpload({ onEntriesLoaded, onError }: GlossaryFileUpl
             className="hidden"
             accept=".csv,.txt"
             onChange={handleFileInput}
+            data-testid="file-input"
           />
         </label>
         <div className="text-xs text-gray-500 space-y-1">

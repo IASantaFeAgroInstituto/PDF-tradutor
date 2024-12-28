@@ -57,4 +57,5 @@ model GlossaryEntry {
   createdAt     DateTime     @default(now())
   knowledgeBase KnowledgeBase @relation(fields: [knowledgeBaseId], references: [id])
   knowledgeBaseId String
+  embedding   Float[]  // Novo campo para armazenar embeddings
 }

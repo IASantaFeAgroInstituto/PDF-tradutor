@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Plus, Save, Trash2, Upload, Download } from 'lucide-react';
+import { useState } from 'react';
+import { Plus, Save, Trash2, Upload, Download, AlertCircle } from 'lucide-react';
 import { GlossaryEntry, KnowledgeBase } from '../../types';
 import { GlossaryFileUpload } from './GlossaryFileUpload';
 
@@ -109,10 +109,11 @@ export function GlossaryEditor({ knowledgeBase, onSave }: GlossaryEditorProps) {
         {entries.map((entry) => (
           <div key={entry.id} className="grid grid-cols-2 gap-4 p-4 bg-white rounded-lg border border-gray-200">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor={`source-${entry.id}`} className="block text-sm font-medium text-gray-700 mb-1">
                 Source Text ({knowledgeBase.sourceLanguage})
               </label>
               <input
+                id={`source-${entry.id}`}
                 type="text"
                 value={entry.sourceText}
                 onChange={(e) => updateEntry(entry.id, { sourceText: e.target.value })}
@@ -120,11 +121,12 @@ export function GlossaryEditor({ knowledgeBase, onSave }: GlossaryEditorProps) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor={`target-${entry.id}`} className="block text-sm font-medium text-gray-700 mb-1">
                 Target Text ({knowledgeBase.targetLanguage})
               </label>
               <div className="flex gap-2">
                 <input
+                  id={`target-${entry.id}`}
                   type="text"
                   value={entry.targetText}
                   onChange={(e) => updateEntry(entry.id, { targetText: e.target.value })}
@@ -133,6 +135,7 @@ export function GlossaryEditor({ knowledgeBase, onSave }: GlossaryEditorProps) {
                 <button
                   onClick={() => removeEntry(entry.id)}
                   className="p-2 text-gray-400 hover:text-red-500"
+                  aria-label="Remove entry"
                 >
                   <Trash2 className="h-5 w-5" />
                 </button>
