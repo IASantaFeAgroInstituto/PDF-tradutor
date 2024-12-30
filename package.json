@@ -15,7 +15,8 @@
     "test:watch": "jest --config jest.config.cjs --watch",
     "test:coverage": "jest --config jest.config.cjs --coverage",
     "test:update": "jest --config jest.config.cjs -u",
-    "test:ci": "jest --config jest.config.cjs --ci --coverage"
+    "test:ci": "jest --config jest.config.cjs --ci --coverage",
+    "vercel-build": "npx prisma migrate deploy"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
