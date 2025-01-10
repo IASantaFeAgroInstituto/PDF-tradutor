@@ -1,0 +1,62 @@
+# Requisitos do Sistema
+Node.js >= 18.0.0
+npm >= 9.0.0
+PostgreSQL >= 14.0
+
+# Variáveis de Ambiente Necessárias
+DATABASE_URL=postgresql://user:password@localhost:5432/database
+JWT_SECRET=your_jwt_secret
+OPENAI_API_KEY=your_openai_api_key
+FRONTEND_URL=http://localhost:5173
+PORT=4000
+
+# Dependências Principais do Frontend
+react@18.3.1
+react-dom@18.3.1
+react-dropzone@14.3.5
+react-router-dom@7.1.1
+axios@1.7.9
+socket.io-client@4.8.1
+react-toastify@11.0.2
+react-hot-toast@2.5.1
+
+# Dependências Principais do Backend
+express@4.21.2
+prisma@5.22.0
+@prisma/client@5.22.0
+openai@4.77.3
+multer@1.4.5-lts.1
+socket.io@4.8.1
+jsonwebtoken@9.0.2
+bcryptjs@2.4.3
+pdf2json@3.1.5
+pdfkit@0.16.0
+
+# Dependências de Desenvolvimento
+typescript@5.7.2
+vite@5.4.2
+@vitejs/plugin-react@4.3.1
+eslint@9.17.0
+prettier@3.4.2
+tailwindcss@3.4.1
+
+# Portas Necessárias
+Frontend: 5173 (desenvolvimento) / 80 (produção)
+Backend: 4000
+PostgreSQL: 5432
+
+# Diretórios que precisam de permissão de escrita
+/uploads
+/translated_pdfs
+/knowledge_bases
+
+# Requisitos de Hardware Recomendados
+CPU: 2+ cores
+RAM: 4GB+
+Armazenamento: 1GB+ de espaço livre
+
+# Navegadores Suportados
+Google Chrome >= 90
+Firefox >= 90
+Safari >= 14
+Edge >= 90 
