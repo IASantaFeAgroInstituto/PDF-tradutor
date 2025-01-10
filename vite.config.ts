@@ -13,11 +13,9 @@ export default defineConfig({
       }
     }
   },
-  optimizeDeps: {
-    include: ['react-dropzone']
-  },
   build: {
     commonjsOptions: {
+      transformMixedEsModules: true,
       include: [/node_modules/]
     }
   }
