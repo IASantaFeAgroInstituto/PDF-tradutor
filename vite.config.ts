@@ -12,5 +12,13 @@ export default defineConfig({
         ws: true,
       }
     }
+  },
+  optimizeDeps: {
+    include: ['react-dropzone']
+  },
+  build: {
+    commonjsOptions: {
+      include: [/node_modules/]
+    }
   }
 });
