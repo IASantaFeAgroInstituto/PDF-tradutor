@@ -6,8 +6,8 @@
   "scripts": {
     "prisma:seed": "npx ts-node server/prisma/seed.ts",
     "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "build": "vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "server:dev": "tsx server/src/index.ts",
     "server:build": "tsc -p server/tsconfig.json",

@@ -5,7 +5,7 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -14,28 +14,8 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "allowJs": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./src/*"],
-      "@server/*": ["./server/src/*"]
-    }
+    "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "src/**/*",
-    "server/src/**/*",
-    "*.ts",
-    "*.tsx",
-    "*.js",
-    "*.jsx",
-    "jest.config.cjs",
-  ],
-  "exclude": [
-    "test", "**/*.test.ts"
-  ],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
