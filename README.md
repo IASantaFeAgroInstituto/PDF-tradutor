@@ -119,15 +119,3 @@ npm run dev
 3. Faça commit das suas alterações (`git commit -m 'Add some AmazingFeature'`)
 4. Faça push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 👥 Autores
-
-- **Instituto Agro Santa Fé** - *Desenvolvimento inicial* - [IASantaFeAgroInstituto](https://github.com/IASantaFeAgroInstituto)
-
-## 📞 Suporte
-
-Para suporte, envie um email para [EMAIL] ou abra uma issue no GitHub. 
